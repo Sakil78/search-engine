@@ -4,9 +4,25 @@ import java.util.Comparator;
 import java.util.List;
 
 public class SortUtil {
+    /**
+     * Sorts the given list of Book objects using the bubble sort algorithm
+     * and the provided comparator.
+     *
+     * @param books      the list of books to sort
+     * @param comparator comparator defining the sort order
+     */
 
     public static void bubbleSort(List<Book> books, Comparator<Book> comparator) {
-        // TODO - missing code
+        // TODO 5: calculate the list size
+        int n = books.size();
+        // TODO 6 & 7: nested loops and compare‑and‑swap
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (comparator.compare(books.get(j), books.get(j + 1)) > 0) {
+                    Collections.swap(books, j, j + 1);
+                }
+            }
+        }
     }
 
     public static void insertionSort(List<Book> books, Comparator<Book> comparator) {

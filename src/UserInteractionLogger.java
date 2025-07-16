@@ -1,6 +1,6 @@
-
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
 public class UserInteractionLogger {
@@ -24,7 +24,11 @@ public class UserInteractionLogger {
 
     // Generic method to log messages with a timestamp
     public void log(String message) {
-    // TODO - missing code.
+        String timestamp = LocalDateTime.now().toString();
+        try (PrintWriter out = new PrintWriter(new FileWriter(LOG_FILE, true))) {
+            out.println(timestamp + " - " + message);
+        } catch (IOException e) {
+            System.err.println("Failed to write to log file: " + e.getMessage());
+        }
     }
-
 }
